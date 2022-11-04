@@ -6,3 +6,4 @@ RE:FLIX 는 개인의 영화 취향에 맞게 OTT 리뷰 영상을 추천해주�
 ## 진행상황 - 22.11.03
 API 구현, UI/UX 설계 중
 
+![reMain](https://user-images.githubusercontent.com/94473725/200003190-60f6794f-f8cc-48b4-ba69-c46f900b5b1b.png)
