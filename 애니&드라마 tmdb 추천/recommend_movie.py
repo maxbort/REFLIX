@@ -1,6 +1,9 @@
 import pandas as pd
+import numpy as np
+import seaborn as sns
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.decomposition import TruncatedSVD
 
 def load_data(filename):
     data = pd.read_csv(filename)
@@ -42,5 +45,26 @@ result_items = random_genres_items_movie("Action")
 result = pd.DataFrame(result_items)
 
 condition = ['tmdbId', 'title', 'poster_path','genre']
-print(result[condition])
-#print(random_genres_items_movie("Action"))
+
+rating_data = pd.read_csv("movie/ratings_final.csv")
+movie_data = pd.read_csv("movie/movie_final.csv")
+
+
+
+user_movie_data = pd.merge(rating_data, movie_data, on='content_id')
+
+user_movie_rating = user_movie_data.pivot_table('rating', index='userId', columns='title').fillna(0)
+
+movie_user_rating = user_movie_rating.values.T
+
+SVD = TruncatedSVD(n_components=12)
+matrix = SVD.fit_transform(movie_user_rating)
+
+corr = np.corrcoef(matrix)
+
+movie_title = user_movie_rating.columns
+movie_title_list = list(movie_title)
+coffey_hands = movie_title_list.index("Guardians of the Galaxy (2014)")
+
+corr_coffey_hands = corr[coffey_hands]
+print(list(movie_title[(corr_coffey_hands >= 0.9)])[:50])

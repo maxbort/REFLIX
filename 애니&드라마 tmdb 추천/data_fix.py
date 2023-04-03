@@ -5,10 +5,12 @@ from tqdm import tqdm
 import time
 
 
-data = pd.read_csv("all_contents/all_content_final.csv")
-data = data.rename(columns= {'genres' : 'genre'})
+data = pd.read_csv("movie/ratings_final.csv")
+print(data.head())
+# data = pd.read_csv("all_contents/all_content_final.csv")
+# data = data.rename(columns= {'genres' : 'genre'})
 
-data.to_csv("all_contents/all_content_final.csv")
+# data.to_csv("all_contents/all_content_final.csv")
 # data = pd.read_csv("movie/ratings.csv")
 
 
