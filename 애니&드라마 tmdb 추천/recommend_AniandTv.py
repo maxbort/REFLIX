@@ -25,12 +25,9 @@ def load_data(filename):
     
     return data, genre_c_sim
 
-
 ani_data, ani_genre_c_sim = load_data("ani\Animation_final.csv")
 tv_data, tv_genre_c_sim = load_data("tvseries\TvSeries_final.csv")
 
-print(ani_data.head())
-print(tv_data.head())
 
 # 장르를 넣으면 랜덤으로 그 장르의 영화 10가지 리턴.
 def random_genres_items_animaition(genre):
