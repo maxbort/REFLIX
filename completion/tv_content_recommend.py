@@ -43,7 +43,6 @@ def recommend_list(data, genre_c_sim, tmdbId, top=30, num_items=10):
     return result.to_dict('records')
     #return result
 
-# ani_recommendations = recommend_list(ani_data, ani_genre_c_sim, tmdbId=2, num_items=10)
 
 # print(ani_recommendations)
 
