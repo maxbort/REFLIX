@@ -44,7 +44,6 @@ def recommend_list(data, genre_c_sim, tmdbId, top=30, num_items=10):
     #return result
 
 
-# print(ani_recommendations)
 
 arg1 = sys.argv[1]
 arg1 = int(arg1)
