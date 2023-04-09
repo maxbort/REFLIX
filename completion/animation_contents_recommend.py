@@ -7,7 +7,6 @@ import sys
 def load_data(filename):
     data = pd.read_csv(filename)
     
-    # 평점 투표수 기준 상위 50%의 영화만 추출
     m = data['rating_count'].quantile(0.8)
     data = data.loc[data['rating_count'] >= m].copy()
 

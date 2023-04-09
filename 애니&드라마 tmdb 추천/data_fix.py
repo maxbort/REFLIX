@@ -5,8 +5,9 @@ from tqdm import tqdm
 import time
 
 
-data = pd.read_csv("movie/ratings_final.csv")
-print(data.head())
+data = pd.read_csv("애니&드라마 tmdb 추천/movie/movie_final.csv")
+data = data.assign(category='movie')
+data.to_csv("Movie_final_2.csv",index= False)
 # data = pd.read_csv("all_contents/all_content_final.csv")
 # data = data.rename(columns= {'genres' : 'genre'})
 

@@ -25,13 +25,13 @@ def load_data(filename):
     
     return data, genre_c_sim
 
-ani_data, ani_genre_c_sim = load_data("ani\Animation_final.csv")
-tv_data, tv_genre_c_sim = load_data("tvseries\TvSeries_final.csv")
+ani_data, ani_genre_c_sim = load_data("ani/Animation_final.csv")
+tv_data, tv_genre_c_sim = load_data("tvseries/TvSeries_final.csv")
 
 
 # 장르를 넣으면 랜덤으로 그 장르의 영화 10가지 리턴.
 def random_genres_items_animaition(genre):
-    df = pd.read_csv("ani\Animation_final.csv")
+    df = pd.read_csv("ani/Animation_final.csv")
     genre_df = df[df['genre'].apply(lambda x: genre in x)]
     genre_df = genre_df.fillna('')
     
@@ -44,7 +44,7 @@ def random_genres_items_animaition(genre):
 
 
 def random_genres_items_tvseries(genre):
-    df = pd.read_csv("tvseries\TvSeries_final.csv.csv")
+    df = pd.read_csv("tvseries/TvSeries_final.csv.csv")
     genre_df = df[df['genres'].apply(lambda x: genre in x)]
     genre_df = genre_df.fillna('')
     
@@ -73,7 +73,7 @@ def recommend_list(data, genre_c_sim, tmdbId, top=30, num_items=10):
     return result.to_dict('records')
     #return result
 
-ani_recommendations = recommend_list(ani_data, ani_genre_c_sim, tmdbId=2, num_items=10)
+ani_recommendations = recommend_list(ani_data, ani_genre_c_sim, tmdbId=37854, num_items=10)
 
 tv_recommendations = recommend_list(tv_data, tv_genre_c_sim, tmdbId=7, num_items=10)
 
