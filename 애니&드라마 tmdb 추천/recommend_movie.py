@@ -27,27 +27,27 @@ def load_data(filename):
     
     return data, genre_c_sim
 
-movie_data = load_data('movie\movie_final.csv')
+movie_data = load_data("애니&드라마 tmdb 추천\movie\movie_final.csv")
 
-def random_genres_items_movie(genre):
-    df = pd.read_csv("movie\movie_final.csv")
-    genre_df = df[df['genre'].apply(lambda x : genre in x)]
-    genre_df = genre_df.fillna('')
+# def random_genres_items_movie(genre):
+#     df = pd.read_csv("애니&드라마 tmdb 추천\movie\movie_final.csv")
+#     genre_df = df[df['genre'].apply(lambda x : genre in x)]
+#     genre_df = genre_df.fillna('')
 
-    if len(genre_df) < 10:
-        result_items = genre_df.to_dict("records")
-    else:
-        result_items = genre_df.sample(n=10).to_dict("records")
+#     if len(genre_df) < 10:
+#         result_items = genre_df.to_dict("records")
+#     else:
+#         result_items = genre_df.sample(n=10).to_dict("records")
 
-    return result_items
+#     return result_items
 
-result_items = random_genres_items_movie("Action")
-result = pd.DataFrame(result_items)
+# result_items = random_genres_items_movie("Action")
+# result = pd.DataFrame(result_items)
 
 condition = ['tmdbId', 'title', 'poster_path','genre']
 
-rating_data = pd.read_csv("movie/ratings_final.csv")
-movie_data = pd.read_csv("movie/movie_final.csv")
+rating_data = pd.read_csv("애니&드라마 tmdb 추천\movie/ratings_final.csv")
+movie_data = pd.read_csv("애니&드라마 tmdb 추천\movie\movie_final.csv")
 
 
 
