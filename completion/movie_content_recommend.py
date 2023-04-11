@@ -32,7 +32,7 @@ coffey_hands = movie_title_list.index(arg1)
 corr_coffey_hands = corr[coffey_hands]
 
 similar_movies = list(movie_title[(corr_coffey_hands < 1.0) & (corr_coffey_hands > 0.9)])
-similar_movies_df = movie_data[movie_data['tmdbId'].isin(similar_movies)][['content_id', 'tmdbId', 'title', 'poster_path']]
+similar_movies_df = movie_data[movie_data['tmdbId'].isin(similar_movies)][['tmdbId']]
 similar_movies_dict = similar_movies_df.to_dict(orient='records')
 
 similar_movies_json = json.dumps(similar_movies_dict, ensure_ascii=False)
