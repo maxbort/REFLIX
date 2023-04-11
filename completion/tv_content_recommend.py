@@ -38,7 +38,7 @@ def recommend_list(data, genre_c_sim, tmdbId, top=30, num_items=10):
     sim_index = sim_index[sim_index != target_index]
     
     result = data.iloc[sim_index].sort_values('score', ascending=False)[:num_items]
-    result = result[['tmdbId', 'title']]
+    result = result[['tmdbId']]
     
     return result.to_dict('records')
     #return result
