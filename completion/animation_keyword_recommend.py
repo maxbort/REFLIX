@@ -22,7 +22,7 @@ def recommend_movies_by_keywords(keywords):
     input_data = tfidf.transform([" ".join(keywords)])
 
     # 유사한 영화 추천
-    similarity_scores, content_indices = nn.kneighbors(input_data, n_neighbors=10)
+    similarity_scores, content_indices = nn.kneighbors(input_data, n_neighbors=100)
 
     # 추천 컨텐츠 출력
     recommended_content = df.iloc[content_indices[0]][['tmdbId','title']].to_dict('records')

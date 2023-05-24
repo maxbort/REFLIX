@@ -7,7 +7,7 @@ import sys
 def load_data(filename):
     data = pd.read_csv(filename)
     
-    m = data['rating_count'].quantile(0.8)
+    m = data['rating_count'].quantile(0.9)
     data = data.loc[data['rating_count'] >= m].copy()
 
     # 가중평균 계산
@@ -27,7 +27,7 @@ def load_data(filename):
 
 ani_data, ani_genre_c_sim = load_data("Animation_final.csv")
 
-def recommend_list(data, genre_c_sim, tmdbId, top=30, num_items=10):
+def recommend_list(data, genre_c_sim, tmdbId, top=30, num_items=100):
     try:
         target_index = data[data['tmdbId'] == tmdbId].index.values[0]
     except IndexError:
@@ -49,5 +49,5 @@ def recommend_list(data, genre_c_sim, tmdbId, top=30, num_items=10):
 arg1 = sys.argv[1]
 arg1 = int(arg1)
 
-ani_recommendations = recommend_list(ani_data, ani_genre_c_sim, tmdbId=arg1, num_items=10)
+ani_recommendations = recommend_list(ani_data, ani_genre_c_sim, tmdbId=arg1, num_items=100)
 print(ani_recommendations)

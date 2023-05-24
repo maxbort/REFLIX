@@ -8,7 +8,7 @@ def load_data(filename):
     data = pd.read_csv(filename)
     
     # 평점 투표수 기준 상위 50%의 영화만 추출
-    m = data['rating_count'].quantile(0.8)
+    m = data['rating_count'].quantile(0.9)
     data = data.loc[data['rating_count'] >= m].copy()
 
     # 가중평균 계산
@@ -33,7 +33,7 @@ def random_genres_items_animaition(genre):
     # df = pd.read_csv("Animation_final.csv")
     genre_df = ani_data[ani_data['genre'].apply(lambda x: genre in x)]
     
-    genre_df = genre_df.sort_values(by='score', ascending=False).head(10)
+    genre_df = genre_df.sort_values(by='score', ascending=False).head(100)
     genre_df = genre_df.fillna('')
     
     result_items = genre_df[['tmdbId']].to_dict("records")

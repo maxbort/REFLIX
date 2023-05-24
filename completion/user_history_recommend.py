@@ -70,4 +70,4 @@ import sys
 arg1 = sys.argv[1]
 arg1 = int(arg1)
 
-print(recommend_movies_to_json(df_svd_preds, arg1, df_movie, df_ratings, num_recommendations=5))
+print(recommend_movies_to_json(df_svd_preds, arg1, df_movie, df_ratings, num_recommendations=100))

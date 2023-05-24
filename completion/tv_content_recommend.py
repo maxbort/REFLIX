@@ -8,7 +8,7 @@ def load_data(filename):
     data = pd.read_csv(filename)
     
     # 평점 투표수 기준 상위 50%의 영화만 추출
-    m = data['rating_count'].quantile(0.8)
+    m = data['rating_count'].quantile(0.9)
     data = data.loc[data['rating_count'] >= m].copy()
 
     # 가중평균 계산
@@ -28,7 +28,7 @@ def load_data(filename):
 
 tv_data, tv_genre_c_sim = load_data("TvSeries_final.csv")
 
-def recommend_list(data, genre_c_sim, tmdbId, top=30, num_items=10):
+def recommend_list(data, genre_c_sim, tmdbId, top=30, num_items=100):
     try:
         target_index = data[data['tmdbId'] == tmdbId].index.values[0]
     except IndexError:
@@ -48,5 +48,5 @@ def recommend_list(data, genre_c_sim, tmdbId, top=30, num_items=10):
 arg1 = sys.argv[1]
 arg1 = int(arg1)
 
-ani_recommendations = recommend_list(tv_data, tv_genre_c_sim, tmdbId=arg1, num_items=10)
+ani_recommendations = recommend_list(tv_data, tv_genre_c_sim, tmdbId=arg1, num_items=100)
 print(ani_recommendations)
